@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import store from './src/reducers';
 
-import MainAppContainer from './containers/MainAppContainer';
 
 /*
  * Stili globali
@@ -23,7 +22,6 @@ require('./styles/themes/default/theme-default.scss');
 
 const renderApp = () => ReactDOM.render(
 	<Provider store={store}>
-		<MainAppContainer />
 	</Provider>
 , document.getElementById('app'));
 
