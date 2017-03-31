@@ -1,6 +1,8 @@
 import { createStore } from 'redux';
 import { combineReducers } from 'redux';
-import wizard from './wizard'
+import buttonReducer from './buttonReducer'
+import backReducer from './backReducer'
+import instrumentReducer from './instrumentReducer'
 
 /*
  * Diversi reducer possono essere combinati se fosse
@@ -9,7 +11,9 @@ import wizard from './wizard'
  */
 
 const reducer = combineReducers({
-	wizard
+	buttonReducer,
+	backReducer,
+	instrumentReducer
 })
 
 export default createStore(reducer, window.devToolsExtension && window.devToolsExtension());

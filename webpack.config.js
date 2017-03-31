@@ -5,7 +5,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: 'index.tpl.ejs',
-            title: 'Repo Manager',
+            title: 'Wizard 2.0',
         })
     ],
 	entry : ['babel-polyfill','./main.js'],
