@@ -1,5 +1,5 @@
 const defaultState = { 
-	buttons: [],
+	buttons: ["base"],
 	listChildren: [], 
 	listInstruments: [],
 	loading: false,

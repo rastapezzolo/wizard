@@ -1,19 +1,20 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import Counter from './components/Counter'
-import counter from './reducers'
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-const store = createStore(counter)
+import { Provider } from 'react-redux'
+import store from './reducers'
+import { VisibleButtonList } from './containers/VisibleButtonList'
+
 const rootEl = document.getElementById('root')
 
-render(
-  <Provider store={store}>
-    <Wizard 
-	    value={store.getState()}
-	    onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
-	    onDecrement={() => store.dispatch({ type: 'DECREMENT' })}/>
-  </Provider>,
-  rootEl
-)
+
+const renderApp = () => ReactDOM.render(
+	<Provider store={store}>
+		<VisibleButtonList />
+	</Provider>
+, rootEl);
+
+store.subscribe(renderApp);
+
+renderApp();
+

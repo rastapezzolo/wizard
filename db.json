@@ -1,1 +1,15 @@
-{}
+{
+	"base":{
+		"children": [
+			"casa",
+			"fuori" 
+			
+		],
+		"instrument" : []
+	},
+	"avanzato" :{
+		"children":[],
+		"instrument":["1", "2", "3" ]
+	}
+
+}

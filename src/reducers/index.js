@@ -10,12 +10,13 @@ import instrumentReducer from './instrumentReducer'
  * parti di applicazione.
  */
 
-const reducer = combineReducers({
+
+const reducers = combineReducers({
 	buttonReducer,
 	backReducer,
 	instrumentReducer
 })
 
-export default createStore(reducer, window.devToolsExtension && window.devToolsExtension());
+export default createStore(reducers, window.devToolsExtension && window.devToolsExtension());
 									// ^^^							^^^
 									// abilitiamo il debug via devTools del browser

@@ -1,25 +1,32 @@
 import { connect } from 'react-redux';
 import ButtonList from '../components/ButtonList';
-import { fetchChildren, fetchChildrenSuccess, fetchChildrenFail } from '../actions/wizard'
+import { fetchChildren, fetchChildrenSuccess, fetchChildrenFail, toggleButton } from '../actions/wizard'
 
 const mapStateToProps = (state) => {
-	buttons: state.buttons
+	return{
+		buttons: state.buttons
+	}
 }
+ 
 
-const mapDispatchToProps = (dispatch) => 
-   	
+const mapDispatchToProps = (dispatch) => {
 	return {
-		requireButtons: (id) => dispatch(fetchChildren(id)).payload
+		onButtonClick: (id) => dispatch(fetchChildren(id)).payload
 			.then((response) => {
-				!response.error 
-				? dispatch(fetchChildrenFail(response.data))
-				: dispatch(fetchChildrenSuccess(response.data))
+				if( !response.error ){
+					dispatch(fetchChildrenSuccess(response.data))
+					for(let singleButton of response.data){
+						dispatch(toggleButton(singleButton.id))
+					}
+				}
+				else dispatch(fetchChildrenFail(response.data))
 			})
-		toggleButton: (id) => dispatch(toggleButton(id)) 
 	}
 }
 
-export const VisibleButtonList = connect(
+const VisibleButtonList = connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(ButtonList)
+
+export default VisibleButtonList

@@ -9,7 +9,7 @@ const defaultState = {
 	error: null
 }
 
-export const instrumentReducer = ( state = defaultState, action ) => {
+const instrumentReducer = ( state = defaultState, action ) => {
 	switch(action.type){
 		case 'FETCH_INSTRUMENT_DATA':
 			return{
@@ -34,3 +34,4 @@ export const instrumentReducer = ( state = defaultState, action ) => {
 		default: return state;
 	}
 }
+export default instrumentReducer
