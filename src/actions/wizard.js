@@ -11,11 +11,11 @@ export const toggleButton = (idButton) => {
 export const fetchChildren = (idButton) => {
 	let request = axios({
 		method: 'GET',
-		url: 'localhost:3333/db.json',
+		url: '/db.json',
 		data: {
 			idButton
 		}
-	}).then( (response) => console.log(response) )
+	})
 
 	return {
 		type: 'FETCH_CHILDREN',
@@ -26,7 +26,7 @@ export const fetchChildren = (idButton) => {
 export const fetchChildrenSuccess = (buttons) => {
 	return {
 		type: 'FETCH_CHILDREN_SUCCESS',
-		payload: buttons.map( (button) => { return button } )
+		payload: buttons
 	}
 }
 

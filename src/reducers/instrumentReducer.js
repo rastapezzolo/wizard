@@ -1,12 +1,6 @@
 const defaultState = { 
-	id: null,
-	visible: false,
-	img: null,
-	url: '',
-	title: '',
-	description: '',
-	loading: true,
-	error: null
+	instruments: [],
+	loading: true
 }
 
 const instrumentReducer = ( state = defaultState, action ) => {
@@ -30,6 +24,18 @@ const instrumentReducer = ( state = defaultState, action ) => {
 			return{
 				...state,
 				error: action.payload.data.error
+			}
+		case 'TOGGLE_BUTTON' :
+			return {
+				...state,
+				instruments: state.instruments.map((instrument) => {
+					instrument.active = false
+					if( Array.isArray(action.id) && action.id.includes(instrument.id))
+						instrument.active = true
+					if( action.id === instrument.id ) 
+						instrument.active = true
+					return instrument
+				})
 			}
 		default: return state;
 	}

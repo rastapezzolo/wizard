@@ -1,16 +1,17 @@
-import { React } from 'react'
-/*import SingleButton from './SingleButton'*/
+import React from 'react'
+import SingleButton from './SingleButton'
 
 const ButtonList = ({ buttons, onButtonClick }) => {
-	console.log(buttons)
-	console.log(onButtonClick)
 	if(buttons.length === 0)
 		return <span>Inizia</span>
 	
 	return (
 			<ul>
-				<li>aaa</li>
-				
+				{ buttons.map( (singleButton)  => {
+					if(singleButton.active)
+							return <SingleButton key={singleButton.id} label={singleButton.label} onClick={() => onButtonClick(singleButton.id)} />
+						})
+				}
 			</ul>
 		)
 }

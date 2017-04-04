@@ -1,20 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-
+import { render } from 'react-dom'
 import { Provider } from 'react-redux'
+
 import store from './src/reducers'
-import VisibleButtonList from './src/containers/VisibleButtonList'
+import VisibleButtonList  from './src/containers/VisibleButtonList'
 
-const rootEl = document.getElementById('root')
+const rootEl = document.getElementById('app')
 
-
-const renderApp = () => ReactDOM.render(
+render(
 	<Provider store={store}>
 		<VisibleButtonList />
 	</Provider>
 , rootEl);
-
-store.subscribe(renderApp);
-
-renderApp();
 
