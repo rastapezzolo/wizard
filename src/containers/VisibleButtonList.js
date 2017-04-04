@@ -22,10 +22,10 @@ const mapDispatchToProps = (dispatch) => {
 									if(singleButton.children.length === 0){
 										if(singleButton.instruments.length !== 0)
 											console.log(singleButton.instruments)
-											dispatch(toggleButton(singleButton.instruments))
+											dispatch(toggleButton(singleButton.instruments, response.data.buttons))
 									}
 									else
-										dispatch(toggleButton(singleButton.children))
+										dispatch(toggleButton(singleButton.children, response.data.buttons))
 								}
 							}
 						}

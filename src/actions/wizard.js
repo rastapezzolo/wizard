@@ -1,10 +1,11 @@
 import axios from 'axios';
 
 /*** BUTTON COMPONENT ***/
-export const toggleButton = (idButton) => {
+export const toggleButton = (idButton, buttons) => {
 	return {
 		type: 'TOGGLE_BUTTON',
-		id: idButton
+		id: idButton,
+		buttons: buttons
 	}
 }
 
