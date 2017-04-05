@@ -3,7 +3,7 @@
 const defaultState = { 
 	instruments: [],
 	buttons: [],
-	loading: true
+	loading: false
 }
 
 const instrumentReducer = ( state = defaultState, action ) => {
@@ -28,19 +28,17 @@ const instrumentReducer = ( state = defaultState, action ) => {
 				...state,
 				error: action.payload.data.error
 			}
-*/		case 'TOGGLE_BUTTON' :
-			console.log(state)
+
+*/		case 'FETCH_INSTRUMENTS' :
 			return {
 				...state,
-				instruments: state.buttons.map((button) => {
-					console.log(button)
-/*					instrument.active = false
-					if( Array.isArray(action.id) && action.id.includes(instrument.id))
-						instrument.active = true
-					if( action.id === instrument.id ) 
-						instrument.active = true
-					return instrument
-*/				})
+				instruments: action.instruments
+			}
+		case 'TOGGLE_INSTRUMENTS' :
+		console.log(action)
+			return {
+				...state,
+				instruments: action.instruments
 			}
 		default: return state;
 	}

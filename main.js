@@ -4,12 +4,16 @@ import { Provider } from 'react-redux'
 
 import store from './src/reducers'
 import VisibleButtonList  from './src/containers/VisibleButtonList'
+import VisibleInstrumentList  from './src/containers/VisibleInstrument'
 
 const rootEl = document.getElementById('app')
 
 render(
 	<Provider store={store}>
-		<VisibleButtonList />
+		<div>
+			<VisibleButtonList />
+			<VisibleInstrumentList />
+		</div>
 	</Provider>
 , rootEl);
 

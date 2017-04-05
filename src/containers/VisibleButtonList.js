@@ -1,39 +1,55 @@
 import { connect } from 'react-redux';
 import ButtonList  from '../components/ButtonList';
-import { fetchChildren, fetchChildrenSuccess, fetchChildrenFail, toggleButton } from '../actions/wizard'
+import { fetchChildren, toggleButton, fetchButtons, fetchButtonsSuccess, fetchButtonsFail, fetchInstruments } from '../actions/wizard'
 
 const mapStateToProps = (state) => {
 	return{
-		buttons: state.buttonReducer.buttons
+		buttons: state.buttonReducer.buttons,
+		instruments: state.buttonReducer.instruments
 	}
 }
  
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		onButtonClick: (id) => {
-			dispatch(fetchChildren(id)).payload
-					.then((response) => {
-
-						if( "undefined" == typeof response.error ){
+		
+		onLoadButtons: () => {
+			dispatch(fetchButtons()).payload
+			.then( (response) => {
+				if( "undefined" == typeof response.error ){
+					dispatch(fetchButtonsSuccess(response.data.buttons))
+				}
+				else{
+					dispatch(fetchButtonsFail(response.error))
+				}
+			})
+		},
+		onButtonClick: (id, instruments) => {
+			dispatch(toggleButton(id))
+			dispatch(fetchChildren(id, instruments))
+					/*.then((response) => {
+												if( "undefined" == typeof response.error ){
 							dispatch(fetchChildrenSuccess(response.data.buttons))
 							for(let singleButton of response.data.buttons){
 								if ( singleButton.id === id ){
 									if(singleButton.children.length === 0){
 										if(singleButton.instruments.length !== 0)
 											console.log(singleButton.instruments)
-											dispatch(toggleButton(singleButton.instruments, response.data.buttons))
+											dispatch(toggleInstruments(singleButton.instruments))
 									}
 									else
-										dispatch(toggleButton(singleButton.children, response.data.buttons))
+										dispatch(toggleButton(singleButton.children))
 								}
 							}
 						}
 						else {
 							console.log(response.error)
-							dispatch(fetchChildrenFail(response.data))
+							dispatch(fetchChildrenFail(response.error))
 						}
-					})
+					})*/
+		},
+		fetchInstruments: (instruments) => {
+			dispatch(fetchInstruments(instruments))
 		}
 	}
 }

@@ -5,42 +5,42 @@
 			"id": 1,
 			"label": "casa",
 			"children": [ 7, 8, 9 ,10 ],
-			"instrumentss": [],
+			"instruments": [],
 			"active": true
 		},
 		{
 			"id": 2,
 			"label": "gite",
 			"children": [25,26],
-			"instrumentss": [],
+			"instruments": [],
 			"active": true
 		},
 		{
 			"id": 3,
 			"label": "hotel",
 			"children": [27,28,29],
-			"instrumentss": [],
+			"instruments": [],
 			"active": true
 		},
 		{
 			"id": 4,
 			"label": "locali",
 			"children": [30,31],
-			"instrumentss": [],
+			"instruments": [],
 			"active": true
 		},
 		{
 			"id": 5,
 			"label": "registrazione",
 			"children": [32,33,34],
-			"instrumentss": [],
+			"instruments": [],
 			"active": true
 		},
 		{
 			"id": 6,
 			"label": "stage",
 			"children": [35,36,37,38],
-			"instrumentss": [],
+			"instruments": [],
 			"active": true
 		},
 		{ 

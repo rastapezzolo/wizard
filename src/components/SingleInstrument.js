@@ -1,18 +1,42 @@
-const SingleInstrument = ({ active, img, url, title, description }) => {
-	return (
-		<li>
-			<a href={url}>
-			<span>{title}</span>
-			<img src={img} />
-			<p>{description}</p>
-		</li>
-	)
+import React from 'react'
+
+class SingleInstrument extends React.Component{
+	constructor(){
+		super()
+		console.log(this.props)
+	}
+
+	componentDidMount(){
+		this._onLoad()
+	}
+
+	_onLoad(){
+		this.props.onLoad()
+	}
+
+
+	render(){
+		const { id, url, title, img, description } = this.props
+		return (
+			<li id={id}>
+				<a href={url}>
+					<span>{title}</span>
+					<img src={img} />
+					<p>{description}</p>
+				</a>
+			</li>
+		)
+	}
 }
 
+
 SingleInstrument.propTypes = {
-	active: React.PropTypes.bool,
+	id: React.PropTypes.string,
 	img: React.PropTypes.string,
 	url: React.PropTypes.string,
 	title: React.PropTypes.string,
 	description: React.PropTypes.string,
+	onLoad: React.PropTypes.func
 };
+
+export default SingleInstrument

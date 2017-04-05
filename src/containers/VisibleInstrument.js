@@ -1,22 +1,34 @@
 import { connect } from 'react-redux';
-import ButtonList from '../components/ButtonList';
-import { fetchChildren, fetchChildrenSuccess, fetchChildrenFail } from '../actions/wizard'
+import InstrumentList from '../components/InstrumentList';
+import { fetchInstrumentData, fetchInstrumentDataSuccess, fetchInstrumentDataFail } from '../actions/wizard'
 
 const mapStateToProps = (state) => {
-	buttons: state.buttons,
-	active: state.active, 
-	url: state.url, 
-	title: state.title, 
-	description: state.description
-}
-
-const mapDispatchToProps = (dispatch) => 
-   	
-	return {
+	return{
+		instruments: state.instrumentReducer.instruments
 	}
 }
 
-export const VisibleInstrumentList = connect(
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onLoadInstrument: (instrument) => {
+			dispatch(fetchInstrumentData(instrument)).payload
+				.then( (response) => {
+					if( "undefined" == typeof response.error ){
+						(fetchInstrumentDataSuccess(response.data.instrumentData))
+					}
+					else{
+						console.log(response.error)
+						dispatch(fetchInstrumentDataFail(response.error))
+					}
+				})
+		}
+	}
+}
+
+const VisibleInstrumentList = connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(InstrumentList)
+
+
+export default VisibleInstrumentList
