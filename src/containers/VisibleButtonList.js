@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => 
    	
 	return {
-		requireButtons: (id) => dispatch(fetchChildren(id)).payload
+		onButtonClick: (id) => dispatch(fetchChildren(id)).payload
 			.then((response) => {
 				!response.error 
 				? dispatch(fetchChildrenFail(response.data))
