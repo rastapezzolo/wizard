@@ -1,17 +1,14 @@
+
+
 const defaultState = { 
-	id: null,
-	visible: false,
-	img: null,
-	url: '',
-	title: '',
-	description: '',
-	loading: true,
-	error: null
+	instruments: [],
+	buttons: [],
+	loading: false
 }
 
-export const instrumentReducer = ( state = defaultState, action ) => {
+const instrumentReducer = ( state = defaultState, action ) => {
 	switch(action.type){
-		case 'FETCH_INSTRUMENT_DATA':
+/*		case 'FETCH_INSTRUMENT_DATA':
 			return{
 				...state,
 				loading: true
@@ -31,6 +28,19 @@ export const instrumentReducer = ( state = defaultState, action ) => {
 				...state,
 				error: action.payload.data.error
 			}
+
+*/		case 'FETCH_INSTRUMENTS' :
+			return {
+				...state,
+				instruments: action.instruments
+			}
+		case 'TOGGLE_INSTRUMENTS' :
+		console.log(action)
+			return {
+				...state,
+				instruments: action.instruments
+			}
 		default: return state;
 	}
 }
+export default instrumentReducer

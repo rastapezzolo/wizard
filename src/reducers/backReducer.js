@@ -7,7 +7,7 @@ const defaultState = {
 	parent: null 
 }
 
-export const backReducer = ( state = defaultState, action ) =>{
+const backReducer = ( state = defaultState, action ) =>{
 	switch(action.type){
 		case'TOGGLE_BUTTON':
 			return {
@@ -18,7 +18,7 @@ export const backReducer = ( state = defaultState, action ) =>{
 					return button
 				})
 			}
-		default: 
-			return state;
 	}
+	return state;
 }
+export default backReducer;

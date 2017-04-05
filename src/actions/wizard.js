@@ -1,46 +1,54 @@
 import axios from 'axios';
 
 /*** BUTTON COMPONENT ***/
-export const toggleButton = (idButton) => {
+export const toggleButton = (id) => {
 	return {
 		type: 'TOGGLE_BUTTON',
-		id: idButton
+		id
 	}
 }
 
-export const fetchChildren = (idButton) => {
+export const fetchButtons = () => {
 	let request = axios({
 		method: 'GET',
-		url: 'localhost:3333/db.json',
-		data: {
-			idButton
-		}
-	}).then( (response) => console.log(response) )
+		url: '/db.json',
+	})
 
 	return {
-		type: 'FETCH_CHILDREN',
+		type: 'FETCH_BUTTONS',
 		payload: request
+	} 
+}
+
+export const fetchButtonsSuccess = (buttons) => {
+	return {
+		type: 'FETCH_BUTTONS_SUCCESS',
+		payload: buttons
 	}
 }
 
-export const fetchChildrenSuccess = (buttons) => {
+export const fetchButtonsFail = (error) => {
 	return {
-		type: 'FETCH_CHILDREN_SUCCESS',
-		payload: buttons.map( (button) => { return button } )
-	}
-}
-
-export const fetchChildrenFail = (error) => {
-	return {
-		type: 'FETCH_CHILDREN_FAIL',
+		type: 'FETCH_BUTTONS_FAIL',
 		payload: error
 	}
 }
 
-export const toggleInstrument = (idButton) => {
+
+export const fetchChildren = (idButton, instruments) => {
+
 	return {
-		type: 'TOGGLE_INSTRUMENT',
-		id: idButton
+		type: 'FETCH_CHILDREN',
+		idButton,
+		instruments
+	}
+}
+
+
+export const toggleInstruments = (instruments) => {
+	return {
+		type: 'TOGGLE_INSTRUMENTS',
+		instruments: instruments
 	}
 }
 
@@ -54,7 +62,7 @@ export const toggleInstrument = (idButton) => {
 export const fetchInstrumentData = (idInstrument) => {
 	let request = axios({
 		method: 'GET',
-		url: 'localhost:3333/db.json',
+		url: 'localhost:3333/db2.json',
 		data: {
 			idInstrument
 		}
@@ -77,5 +85,12 @@ export const fetchInstrumentDataFail = (error) => {
 	return {
 		type: 'FETCH_INSTRUMENT_DATA_FAIL',
 		payload: error
+	}
+}
+
+export const fetchInstruments = (instruments) => {
+	return {
+		type: 'FETCH_INSTRUMENTS',
+		instruments
 	}
 }

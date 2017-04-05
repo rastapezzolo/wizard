@@ -1,7 +1,15 @@
-let SingleButton = ({ id, onClick, text, children }) => {
+import React from 'react'
+
+const SingleButton = ({ label, onClick }) => {
 	return (
-		<div>
-			<button id="{id}" onClick={onClick}> {text} </button>
-		</div>
+		<button onClick={onClick}> {label} </button>
 	)
 }
+
+
+SingleButton.propTypes = {
+	label: React.PropTypes.string,
+	onClick: React.PropTypes.func
+};
+
+export default SingleButton

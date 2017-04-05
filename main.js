@@ -1,30 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-
+import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import store from './src/reducers';
 
+import store from './src/reducers'
+import VisibleButtonList  from './src/containers/VisibleButtonList'
+import VisibleInstrumentList  from './src/containers/VisibleInstrument'
 
-/*
- * Stili globali
- */
-/*require('normalize.css');
-require('./styles/themes/default/theme-default.scss');
-*/
+const rootEl = document.getElementById('app')
 
-/*
- * Il Provider di react-redux passa lo store come prop
- * lungo la gerarchia dei componenti.
- *
- * In questo modo lo store verrà automaticamente adottato
- * dalla funzione connect() con cui generare i container.
- */
-
-const renderApp = () => ReactDOM.render(
+render(
 	<Provider store={store}>
+		<div>
+			<VisibleButtonList />
+			<VisibleInstrumentList />
+		</div>
 	</Provider>
-, document.getElementById('app'));
+, rootEl);
 
-store.subscribe(renderApp);
-
-renderApp();

@@ -1,36 +1,48 @@
 const defaultState = { 
 	buttons: [],
-	listChildren: [], 
-	listInstruments: [],
-	loading: false,
-	error: null,
-	parent: null 
+	children: [],
+	instruments: [],
+	loading: false
 }
 
 const buttonReducer = ( state = defaultState, action ) => {
 	
-
 	switch( action.type ){
 
+
+
 		case 'FETCH_CHILDREN' :
+			return {
+				...state,
+				buttons: state.buttons.map( (button) => {
+						state.children.map((child) => {
+							if('undefined' !== typeof(child) && child.includes(button.id))
+								button.active = true
+						}
+					) 
+					return button
+				}),
+				instruments: state.buttons.filter( (button) =>{ 
+								return button.id === action.idButton && button.instruments.length > 0
+							}).map( (button) => {return button.instruments})[0]
+
+			};
+
+		case 'FETCH_BUTTONS' :
 
 			return {
 				...state,
 				loading: true
 			};
 
-		case 'FETCH_CHILDREN_SUCCESS' :
-			
+		case 'FETCH_BUTTONS_SUCCESS' :
 			return {
 				...state,
 				buttons: action.payload,
 				loading: false,
-				listChildren: action.payload.children,
-				listInstruments: action.payload.instruments,
-				parent: action.payload.parent
 			}
 
-		case 'FETCH_CHILDREN_FAIL' :
+		case 'FETCH_BUTTONS_FAIL' :
 			
 			return {
 				...state,
@@ -42,11 +54,13 @@ const buttonReducer = ( state = defaultState, action ) => {
 		case 'TOGGLE_BUTTON' :
 			return {
 				...state,
-				buttons: state.buttons.map((button) => {
-					if( action.id === button.id ) 
-						button.visible = true
-					return button
-				})
+				children: state.buttons.map((button) => {
+					button.active = false
+					if( action.id === button.id ) {
+						return button.children
+					}
+					
+				}),
 			}
 		default:
 			return state

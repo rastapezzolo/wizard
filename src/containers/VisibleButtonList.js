@@ -1,25 +1,51 @@
 import { connect } from 'react-redux';
-import ButtonList from '../components/ButtonList';
-import { fetchChildren, fetchChildrenSuccess, fetchChildrenFail } from '../actions/wizard'
+import ButtonList  from '../components/ButtonList';
+import { fetchChildren, toggleButton, fetchButtons, fetchButtonsSuccess, fetchButtonsFail, fetchInstruments } from '../actions/wizard'
 
 const mapStateToProps = (state) => {
-	buttons: state.buttons
+	return{
+		buttons: state.buttonReducer.buttons,
+		instruments: state.buttonReducer.instruments
+	}
 }
+ 
 
-const mapDispatchToProps = (dispatch) => 
-   	
+const mapDispatchToProps = (dispatch) => {
 	return {
-		onButtonClick: (id) => dispatch(fetchChildren(id)).payload
-			.then((response) => {
-				!response.error 
-				? dispatch(fetchChildrenFail(response.data))
-				: dispatch(fetchChildrenSuccess(response.data))
-			})
-		toggleButton: (id) => dispatch(toggleButton(id)) 
+
+		onButtonClick: (id, instruments) => {
+			dispatch(toggleButton(id))
+			dispatch(fetchChildren(id, instruments))
+					/*.then((response) => {
+												if( "undefined" == typeof response.error ){
+							dispatch(fetchChildrenSuccess(response.data.buttons))
+							for(let singleButton of response.data.buttons){
+								if ( singleButton.id === id ){
+									if(singleButton.children.length === 0){
+										if(singleButton.instruments.length !== 0)
+											console.log(singleButton.instruments)
+											dispatch(toggleInstruments(singleButton.instruments))
+									}
+									else
+										dispatch(toggleButton(singleButton.children))
+								}
+							}
+						}
+						else {
+							console.log(response.error)
+							dispatch(fetchChildrenFail(response.error))
+						}
+					})*/
+		},
+		fetchInstruments: (instruments) => {
+			dispatch(fetchInstruments(instruments))
+		}
 	}
 }
 
-export const VisibleButtonList = connect(
+const VisibleButtonList = connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(ButtonList)
+
+export default VisibleButtonList
