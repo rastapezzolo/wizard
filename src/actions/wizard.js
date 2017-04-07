@@ -59,12 +59,12 @@ export const toggleInstruments = (instruments) => {
 
 /*** INSTRUMENT COMPONENT **/
 
-export const fetchInstrumentData = (idInstrument) => {
+export const fetchInstrumentData = (instruments) => {
 	let request = axios({
 		method: 'GET',
-		url: 'localhost:3333/db2.json',
+		url: '/dbInstrument.json',
 		data: {
-			idInstrument
+			instruments
 		}
 	})
 

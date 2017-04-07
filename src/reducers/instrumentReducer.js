@@ -8,7 +8,7 @@ const defaultState = {
 
 const instrumentReducer = ( state = defaultState, action ) => {
 	switch(action.type){
-/*		case 'FETCH_INSTRUMENT_DATA':
+		case 'FETCH_INSTRUMENT_DATA':
 			return{
 				...state,
 				loading: true
@@ -16,20 +16,18 @@ const instrumentReducer = ( state = defaultState, action ) => {
 		case 'FETCH_INSTRUMENT_DATA_SUCCESS':
 			return {
 				...state,
-				visible: true,
+				instruments: action.payload.instruments,
 				loading: false,
-				img: action.payload.data.img,
-				url: action.payload.data.url,
-				title: action.payload.data.title,
-				description: action.payload.data.description
-			}
+				} 
+
+			
 		case 'FETCH_INSTRUMENT_DATA_FAIL':
 			return{
 				...state,
 				error: action.payload.data.error
 			}
 
-*/		case 'FETCH_INSTRUMENTS' :
+		case 'FETCH_INSTRUMENTS' :
 			return {
 				...state,
 				instruments: action.instruments

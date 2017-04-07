@@ -75,7 +75,7 @@
 			"id": 11,
 			"label": "lessThan",
 			"children":[],
-			"instruments":["YDP143"," YDP163","YDPS52"," DGX660"],
+			"instruments":["YDP143","YDP163","YDPS52","DGX660"],
 			"active": false
 		},
 		{	

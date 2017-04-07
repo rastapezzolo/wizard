@@ -3,7 +3,6 @@ import React from 'react'
 class SingleInstrument extends React.Component{
 	constructor(){
 		super()
-		console.log(this.props)
 	}
 
 	componentDidMount(){

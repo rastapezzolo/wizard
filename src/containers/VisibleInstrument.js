@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch(fetchInstrumentData(instrument)).payload
 				.then( (response) => {
 					if( "undefined" == typeof response.error ){
-						(fetchInstrumentDataSuccess(response.data.instrumentData))
+						(fetchInstrumentDataSuccess(response.data))
 					}
 					else{
 						console.log(response.error)
