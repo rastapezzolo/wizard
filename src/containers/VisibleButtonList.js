@@ -12,7 +12,18 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-
+		
+		onLoadButtons: () => {
+			dispatch(fetchButtons()).payload
+			.then( (response) => {
+				if( "undefined" == typeof response.error ){
+					dispatch(fetchButtonsSuccess(response.data.buttons))
+				}
+				else{
+					dispatch(fetchButtonsFail(response.error))
+				}
+			})
+		},
 		onButtonClick: (id, instruments) => {
 			dispatch(toggleButton(id))
 			dispatch(fetchChildren(id, instruments))
