@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ButtonList  from '../components/ButtonList';
-import { fetchChildren, toggleButton, fetchButtons, fetchButtonsSuccess, fetchButtonsFail, fetchInstruments } from '../actions/wizard'
+import { fetchChildren, toggleButton, fetchInstruments } from '../actions/wizard'
 
 const mapStateToProps = (state) => {
 	return{
