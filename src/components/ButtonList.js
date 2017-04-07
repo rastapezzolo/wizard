@@ -19,8 +19,8 @@ class ButtonList extends React.Component{
 	render(){
 
 		const { buttons } = this.props;
-/*		
-*/		return (
+
+		return (
 			
 			<ul>
 				{ 	
@@ -37,7 +37,7 @@ class ButtonList extends React.Component{
 		)
 	}
 	componentDidMount(){
-//		this.props.onLoadButtons();
+		this.props.onLoadButtons();
 	}
 }
 
@@ -47,7 +47,7 @@ ButtonList.propTypes = {
 	instruments: React.PropTypes.array,
 	onButtonClick: React.PropTypes.func,
 	fetchInstruments: React.PropTypes.func,
-//	onLoadButtons: React.PropTypes.func
+	onLoadButtons: React.PropTypes.func
 };
 
 export default ButtonList;

@@ -5,12 +5,12 @@ class SingleInstrument extends React.Component{
 		super()
 	}
 
-	componentDidMount(){
+	componentWillMount(){
 		this._onLoad()
 	}
 
 	_onLoad(){
-		this.props.onLoad()
+		this.props.onLoad(this.props.id)
 	}
 
 
@@ -20,7 +20,7 @@ class SingleInstrument extends React.Component{
 			<li id={id}>
 				<a href={url}>
 					<span>{title}</span>
-					<img src={img} />
+					<img src={'/src/images/'+img} />
 					<p>{description}</p>
 				</a>
 			</li>

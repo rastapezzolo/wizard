@@ -16,7 +16,10 @@ const instrumentReducer = ( state = defaultState, action ) => {
 		case 'FETCH_INSTRUMENT_DATA_SUCCESS':
 			return {
 				...state,
-				instruments: action.payload.instruments,
+				instruments: action.payload.instruments.map( (instrument) => {
+					console.log('instrument',instrument)
+					return instrument
+				} ),
 				loading: false,
 				} 
 
@@ -24,7 +27,7 @@ const instrumentReducer = ( state = defaultState, action ) => {
 		case 'FETCH_INSTRUMENT_DATA_FAIL':
 			return{
 				...state,
-				error: action.payload.data.error
+				error: action.payload.error
 			}
 
 		case 'FETCH_INSTRUMENTS' :
@@ -33,7 +36,6 @@ const instrumentReducer = ( state = defaultState, action ) => {
 				instruments: action.instruments
 			}
 		case 'TOGGLE_INSTRUMENTS' :
-		console.log(action)
 			return {
 				...state,
 				instruments: action.instruments

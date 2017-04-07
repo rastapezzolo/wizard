@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import InstrumentList from '../components/InstrumentList';
-import { fetchInstrumentData, fetchInstrumentDataSuccess, fetchInstrumentDataFail } from '../actions/wizard'
+import { fetchInstrumentData, fetchInstrumentDataSuccess } from '../actions/wizard'
 
 const mapStateToProps = (state) => {
 	return{
@@ -13,13 +13,14 @@ const mapDispatchToProps = (dispatch) => {
 		onLoadInstrument: (instrument) => {
 			dispatch(fetchInstrumentData(instrument)).payload
 				.then( (response) => {
-					if( "undefined" == typeof response.error ){
-						(fetchInstrumentDataSuccess(response.data))
+					if( "undefined" === typeof response.error ){
+						//console.log(response.data)
+						dispatch(fetchInstrumentDataSuccess(response.data))
 					}
-					else{
+					/*else{
 						console.log(response.error)
 						dispatch(fetchInstrumentDataFail(response.error))
-					}
+					}*/
 				})
 		}
 	}

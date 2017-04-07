@@ -6,28 +6,28 @@
 			"img": "YDP-143_B_a_0002_f-150x130.jpg",
 			"url": "#", 
 			"title": "YDP143",
-			"description":
+			"description": "descrizione di prova"
 		},
 		{
 			"id": "YDP163",
 			"img": "YDP-163_R_a_0002_f-150x130.jpg",
 			"url": "#",
 			"title": "YDP163",
-			"description":
+			"description": "descrizione di prova"
 		},
 		{
 			"id": "YDPS52",
 			"img": "ydp_s52b_a_0001_f-1-150x130.jpg",
 			"url": "#",
 			"title": "YDPS52",
-			"description":
+			"description": "descrizione di prova"
 		},
 		{
 			"id": "DGX660",
 			"img": "dgx660b_a_0001_f-150x130.jpg",
 			"url": "#",
 			"title": "DGX660",
-			"description":
+			"description": "descrizione di prova"
 		}
 	]
 }

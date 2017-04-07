@@ -7,7 +7,6 @@ import VisibleButtonList  from './src/containers/VisibleButtonList'
 import VisibleInstrumentList  from './src/containers/VisibleInstrument'
 
 const rootEl = document.getElementById('app')
-
 render(
 	<Provider store={store}>
 		<div>
