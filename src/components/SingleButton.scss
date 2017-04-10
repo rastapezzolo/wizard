@@ -1,0 +1,25 @@
+$pink : #E667AA;
+
+%buttonWizard{
+	padding: 2em 2em;
+    text-transform: uppercase;
+    border: 2px solid $pink;
+    background: transparent;
+    color: $pink;
+    margin: 25px 0;
+    width: 100%;
+}
+
+.button{
+	@extend %buttonWizard;
+    transition: color .3s ease-in-out, background .3s ease-in-out;
+	&:hover{
+	    background: $pink;
+	    color: #fff;
+	    font-weight: 600;
+	}
+}
+
+.cazoz{
+	background-color: red;
+}

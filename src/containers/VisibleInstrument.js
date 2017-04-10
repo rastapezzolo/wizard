@@ -11,8 +11,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		onLoadInstrument: (instrument) => {
-			dispatch(fetchInstrumentData(instrument)).payload
+
+				dispatch(fetchInstrumentData(instrument)).payload
 				.then( (response) => {
+//					console.log(response)
 					if( "undefined" === typeof response.error ){
 						//console.log(response.data)
 						dispatch(fetchInstrumentDataSuccess(response.data))
@@ -21,7 +23,9 @@ const mapDispatchToProps = (dispatch) => {
 						console.log(response.error)
 						dispatch(fetchInstrumentDataFail(response.error))
 					}*/
-				})
+				})	
+			
+			
 		}
 	}
 }

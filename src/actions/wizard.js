@@ -62,7 +62,7 @@ export const toggleInstruments = (instruments) => {
 export const fetchInstrumentData = (idInstrument) => {
 	let request = axios({
 		method: 'GET',
-		url: '/getInstrument.php',
+		url: 'http://repos.meloriacomunicazione.com/get-instrument/'+idInstrument,
 		data: {
 			idInstrument
 		}

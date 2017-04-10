@@ -16,10 +16,7 @@ const instrumentReducer = ( state = defaultState, action ) => {
 		case 'FETCH_INSTRUMENT_DATA_SUCCESS':
 			return {
 				...state,
-				instruments: action.payload.instruments.map( (instrument) => {
-					console.log('instrument',instrument)
-					return instrument
-				} ),
+				instruments: state.instruments.map((singleInstrument)=>{if(singleInstrument === action.payload.id) return action.payload; else return singleInstrument}),
 				loading: false,
 				} 
 

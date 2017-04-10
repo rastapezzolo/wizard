@@ -16,15 +16,17 @@ class SingleInstrument extends React.Component{
 
 	render(){
 		const { id, url, title, img, description } = this.props
-		return (
-			<li id={id}>
-				<a href={url}>
-					<span>{title}</span>
-					<img src={'/src/images/'+img} />
-					<p>{description}</p>
-				</a>
-			</li>
-		)
+		if('undefined' !== typeof title)
+			return (
+				<li id={id}>
+					<a href={url}>
+						<span>{title}</span>
+						<img src={'/src/images/'+img} />
+						<p>{description}</p>
+					</a>
+				</li>
+			)
+		else return null
 	}
 }
 

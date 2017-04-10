@@ -1,5 +1,6 @@
 import React from 'react'
 import SingleButton from './SingleButton'
+import style from './ButtonList.scss'
 
 class ButtonList extends React.Component{
 	constructor(){
@@ -19,18 +20,21 @@ class ButtonList extends React.Component{
 	render(){
 
 		const { buttons } = this.props;
-
+		console.log(style)
 		return (
 			
-			<ul>
+			<ul className={style.list}>
 				{ 	
 					buttons.map( (singleButton)  => {
 						if( singleButton.active /*&& ('undefined' === typeof instruments || instruments.length === 0*/)
-							return <SingleButton 
-									key={singleButton.id} 
-									label={singleButton.label} 
-									onClick={() => this._updateInstruments(singleButton)} 
-									/>
+							return <li key={singleButton.id}
+										className={style.listItem} >
+										<SingleButton 
+										label={singleButton.label} 
+										onClick={() => this._updateInstruments(singleButton)} 
+										/>
+									</li>
+									
 					})
 				}
 			</ul>

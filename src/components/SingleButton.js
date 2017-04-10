@@ -1,8 +1,10 @@
 import React from 'react'
+import style from './SingleButton.scss'
+
 
 const SingleButton = ({ label, onClick }) => {
 	return (
-		<button onClick={onClick}> {label} </button>
+		<button className={style.button + ' ' + style.cazoz} onClick={onClick}> {label} </button>
 	)
 }
 

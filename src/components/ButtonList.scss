@@ -1,0 +1,23 @@
+	@mixin clearfix() {
+	  &::after {
+	    display: block;
+	    content: "";
+	    clear: both;
+	  }
+	}
+
+	.list{
+		@include clearfix;
+		background-color: black;
+		padding: 1em;
+	}
+
+	%list{
+		list-style: none;
+		width: 33.3333%; 
+		float: left;
+	}
+
+	.listItem{
+		@extend %list;
+	}

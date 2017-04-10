@@ -6,22 +6,21 @@ class InstrumentList extends React.Component{
 	constructor(props) {
 		super(props);
 	}
-
 	render(){
 		const {instruments, onLoadInstrument} = this.props;
-		console.log(instruments)
+									console.log(instruments)
 		if('undefined' !== typeof instruments && instruments.length > 0)
 			return (
 					<ul>
 						{ 
 							instruments.map( (singleInstrument)  => {
 									return <SingleInstrument 
-											key={singleInstrument.id} 
+											key={'string'===typeof singleInstrument ? singleInstrument : singleInstrument.id} 
 											img={singleInstrument.img} 
 											url={singleInstrument.url} 
 											title={singleInstrument.title} 
 											description={singleInstrument.description} 
-											onLoad={() => onLoadInstrument(singleInstrument.id)}
+											onLoad={() => onLoadInstrument(singleInstrument)}
 											/>
 								})
 						}
